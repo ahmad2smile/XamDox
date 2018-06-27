@@ -1,30 +1,32 @@
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamDox.Services;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamDox
 {
 	public partial class App : Application
 	{
-		public App ()
+		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			var uiService = new UiService();
+
+			MainPage = uiService.GetUi();
 		}
 
-		protected override void OnStart ()
+		protected override void OnStart()
 		{
 			// Handle when your app starts
 		}
 
-		protected override void OnSleep ()
+		protected override void OnSleep()
 		{
 			// Handle when your app sleeps
 		}
 
-		protected override void OnResume ()
+		protected override void OnResume()
 		{
 			// Handle when your app resumes
 		}
