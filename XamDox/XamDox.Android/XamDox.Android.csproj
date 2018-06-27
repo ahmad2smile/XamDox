@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\GradientLayoutRenderer.cs" />
+    <Compile Include="Renderers\LoginEntryRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +93,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XamDox.Components\XamDox.Components.csproj">
+      <Project>{0E1D74D4-14DD-4989-BE96-AF47EE3C4C09}</Project>
+      <Name>XamDox.Components</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamDox\XamDox.csproj">
       <Project>{54203495-A87E-4E10-BCD0-06309C6B4C7E}</Project>
       <Name>XamDox</Name>
