@@ -153,6 +153,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TimeClock\TimeClock.csproj">
+      <Project>{35d88946-6172-42cd-96d3-bfaa289aee12}</Project>
+      <Name>TimeClock</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamDox.Components\XamDox.Components.csproj">
       <Project>{0E1D74D4-14DD-4989-BE96-AF47EE3C4C09}</Project>
       <Name>XamDox.Components</Name>
