@@ -61,7 +61,6 @@
     <Compile Include="Mocks\FormsMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppTests.cs" />
-    <Compile Include="Services\UiServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

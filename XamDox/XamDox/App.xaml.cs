@@ -1,6 +1,5 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamDox.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamDox
@@ -11,9 +10,7 @@ namespace XamDox
 		{
 			InitializeComponent();
 
-			var uiService = new UiService();
-
-			MainPage = uiService.GetUi();
+			MainPage = new AppConfig().GetAppScreen();
 		}
 
 		protected override void OnStart()

@@ -5,9 +5,9 @@ namespace XamDox
 {
 	public class AppConfig
 	{
-		public Page GetAppInstance()
+		public Page GetAppScreen()
 		{
-			return new MainScreen();
+			return new TimeClockApp().AppScreen();
 		}
 	}
 }
