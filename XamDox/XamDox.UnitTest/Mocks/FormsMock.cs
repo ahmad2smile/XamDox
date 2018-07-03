@@ -38,13 +38,6 @@ namespace XamDox.UnitTest.Mocks
 				throw new NotImplementedException();
 			}
 
-			private static int hex(int v)
-			{
-				if (v < 10)
-					return '0' + v;
-				return 'a' + v - 10;
-			}
-
 			public double GetNamedSize(NamedSize size, Type targetElement, bool useOldSizes)
 			{
 				switch (size)
@@ -77,7 +70,8 @@ namespace XamDox.UnitTest.Mocks
 				get { return false; }
 			}
 
-			public string RuntimePlatform { get; set; }
+			// ReSharper disable once UnassignedGetOnlyAutoProperty
+			public string RuntimePlatform { get; }
 
 			public void BeginInvokeOnMainThread(Action action)
 			{
@@ -94,15 +88,14 @@ namespace XamDox.UnitTest.Mocks
 
 			public void StartTimer(TimeSpan interval, Func<bool> callback)
 			{
-				Timer timer = null;
 				TimerCallback onTimeout = o => BeginInvokeOnMainThread(() =>
 				{
 					if (callback())
+						// ReSharper disable once RedundantJumpStatement
 						return;
 
-					timer.Dispose();
 				});
-				timer = new Timer(onTimeout, null, interval, interval);
+				var unused = new Timer(onTimeout, null, interval, interval);
 			}
 
 			public Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)
