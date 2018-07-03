@@ -1,13 +1,12 @@
-﻿using TimeClock;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace XamDox
 {
 	public class AppConfig
 	{
-		public Page GetAppScreen()
+		public static Page GetAppScreen()
 		{
-			return new TimeClockApp().AppScreen();
+			return TimeClock.App.AppScreen();
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace XamDox
 		{
 			InitializeComponent();
 
-			MainPage = new AppConfig().GetAppScreen();
+			MainPage = AppConfig.GetAppScreen();
 		}
 
 		protected override void OnStart()
