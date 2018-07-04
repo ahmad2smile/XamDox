@@ -2,11 +2,8 @@
 
 namespace XamDox
 {
-	public class AppConfig
+	public static class AppConfig
 	{
-		public static Page GetAppScreen()
-		{
-			return TimeClock.App.AppScreen();
-		}
+		public static Page AppScreen => TimeClock.App.AppScreen;
 	}
 }
