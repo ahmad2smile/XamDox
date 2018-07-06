@@ -1,6 +1,7 @@
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace XamDox
 {
 	public partial class App
@@ -9,7 +10,9 @@ namespace XamDox
 		{
 			InitializeComponent();
 
-			MainPage = AppConfig.AppScreen;
+			var _ = new PlatformConfig();
+
+			MainPage = PlatformConfig.AppUi;
 		}
 
 		protected override void OnStart()

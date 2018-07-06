@@ -15,9 +15,7 @@ namespace XamDox.UnitTest
 		[Test]
 		public void GetAppInstance_ReturnsPage()
 		{
-			var result = AppConfig.AppScreen;
-
-			Assert.True(result is Page _);
+			Assert.True(PlatformConfig.AppUi is Page _);
 		}
 
 	}

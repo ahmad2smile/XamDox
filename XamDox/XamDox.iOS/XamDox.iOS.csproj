@@ -27,6 +27,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer: Asad Khan (9WVLP23FB5)</CodesignKey>
+    <CodesignProvision />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -48,9 +50,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Asad Khan (9WVLP23FB5)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>Timeclock_App_Development_Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -88,13 +91,20 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CameraViewRenderer.cs" />
     <Compile Include="Renderers\GradientLayoutRenderer.cs" />
     <Compile Include="Renderers\LoginEntryRenderer.cs" />
+    <Compile Include="Renderers\UICameraView.cs" />
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,16 +163,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TimeClock\TimeClock.csproj">
-      <Project>{35d88946-6172-42cd-96d3-bfaa289aee12}</Project>
-      <Name>TimeClock</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XamDox.Components\XamDox.Components.csproj">
       <Project>{0E1D74D4-14DD-4989-BE96-AF47EE3C4C09}</Project>
       <Name>XamDox.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\XamDox\XamDox.csproj">
-      <Project>{54203495-A87E-4E10-BCD0-06309C6B4C7E}</Project>
+      <Project>{eac866ca-de9a-48b7-8607-ebbcb5f56cb4}</Project>
       <Name>XamDox</Name>
     </ProjectReference>
   </ItemGroup>

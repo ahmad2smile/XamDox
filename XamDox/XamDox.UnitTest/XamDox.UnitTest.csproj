@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TimeClock\TimeClock.csproj">
+      <Project>{35D88946-6172-42CD-96D3-BFAA289AEE12}</Project>
+      <Name>TimeClock</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamDox\XamDox.csproj">
       <Project>{EAC866CA-DE9A-48B7-8607-EBBCB5F56CB4}</Project>
       <Name>XamDox</Name>

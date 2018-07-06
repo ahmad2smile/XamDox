@@ -21,11 +21,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>XamDox</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.XamDox</string>
+	<string>com.schedulingplus.timeclock</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -34,5 +34,9 @@
 	<string>XamDox</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to use Camera for Employee Identity Verification</string>
 </dict>
 </plist>

@@ -96,6 +96,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CameraViewServiceRenderer.cs" />
     <Compile Include="Renderers\GradientLayoutRenderer.cs" />
     <Compile Include="Renderers\LoginEntryRenderer.cs" />
   </ItemGroup>
@@ -154,9 +155,12 @@
       <Name>XamDox.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\XamDox\XamDox.csproj">
-      <Project>{54203495-A87E-4E10-BCD0-06309C6B4C7E}</Project>
+      <Project>{eac866ca-de9a-48b7-8607-ebbcb5f56cb4}</Project>
       <Name>XamDox</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

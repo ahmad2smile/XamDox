@@ -62,7 +62,7 @@ namespace XamDox.Droid.Renderers
 					break;
 			}
 
-			var paint = new Android.Graphics.Paint()
+			var paint = new Android.Graphics.Paint
 			{
 				Dither = true,
 			};
