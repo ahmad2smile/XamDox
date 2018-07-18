@@ -27,8 +27,12 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Asad Khan (9WVLP23FB5)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision />
+    <MtouchExtraArgs>-cxx -gcc_flags "-L${ProjectDir} -lFaceDetection.iOS -framework CFNetwork -force_load ${ProjectDir}/libFaceDetection.iOS.a"</MtouchExtraArgs>
+    <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <MtouchProfiling>true</MtouchProfiling>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -106,6 +110,9 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="libFaceDetection.iOS.a">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
