@@ -110,7 +110,7 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="libFaceDetection.iOS.a">
+    <None Include="lib\libFaceDetection.iOS.a">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
