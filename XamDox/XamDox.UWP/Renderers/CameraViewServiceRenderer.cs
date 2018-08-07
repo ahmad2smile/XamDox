@@ -8,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
 using Windows.Graphics.Display;
 using Windows.Media.Capture;
+using Windows.Media.MediaProperties;
 using Windows.System.Display;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
@@ -20,7 +21,6 @@ using XamDox.Services;
 using XamDox.UWP.Renderers;
 using Application = Windows.UI.Xaml.Application;
 using FlowDirection = Windows.UI.Xaml.FlowDirection;
-using ImageSource = Xamarin.Forms.ImageSource;
 
 [assembly: Dependency(typeof(CameraViewServiceRenderer))]
 [assembly: ExportRenderer(typeof(CameraView), typeof(CameraViewServiceRenderer))]
@@ -56,15 +56,13 @@ namespace XamDox.UWP.Renderers
 				_app.Suspending += OnAppSuspending;
 				_app.Resuming += OnAppResuming;
 
-				_captureElement = new CaptureElement();
-				_captureElement.Stretch = Stretch.UniformToFill;
+				_captureElement = new CaptureElement { Stretch = Stretch.UniformToFill };
 
 				SetupCamera();
 				SetNativeControl(_captureElement);
 			}
 			if (e.OldElement != null)
 			{
-				// Unsubscribe
 				Tapped -= OnCameraPreviewTapped;
 				_displayInformation.OrientationChanged -= OnOrientationChanged;
 				_app.Suspending -= OnAppSuspending;
@@ -72,11 +70,10 @@ namespace XamDox.UWP.Renderers
 			}
 			if (e.NewElement != null)
 			{
-				// Subscribe
 				Tapped += OnCameraPreviewTapped;
 			}
 
-			CapturePhotoService.ImageCaptureHandler(ImageSource.FromStream(() => new MemoryStream()));
+			//			CapturePhotoService.ImageCaptureHandler(Xamarin.Forms.ImageSource.FromStream(() => new MemoryStream()));
 		}
 
 		private async void SetupCamera()
@@ -85,8 +82,6 @@ namespace XamDox.UWP.Renderers
 			_displayInformation.OrientationChanged += OnOrientationChanged;
 			await InitializeCameraAsync();
 		}
-
-		#region Event Handlers
 
 		private async void OnOrientationChanged(DisplayInformation sender, object args)
 		{
@@ -109,10 +104,6 @@ namespace XamDox.UWP.Renderers
 			}
 		}
 
-		#endregion
-
-		#region Camera
-
 		private async Task InitializeCameraAsync()
 		{
 			await MediaCaptureLifeLock.WaitAsync();
@@ -120,7 +111,7 @@ namespace XamDox.UWP.Renderers
 			if (_mediaCapture == null)
 			{
 				// Attempt to get the back camera, but use any camera if not
-				var cameraDevice = await FindCameraDeviceByPanelAsync(Windows.Devices.Enumeration.Panel.Back);
+				var cameraDevice = await FindCameraDeviceByPanelAsync(Windows.Devices.Enumeration.Panel.Front);
 				if (cameraDevice == null)
 				{
 					Debug.WriteLine("No camera found");
@@ -134,7 +125,6 @@ namespace XamDox.UWP.Renderers
 					await _mediaCapture.InitializeAsync(settings);
 					_isInitialized = true;
 				}
-
 				catch (UnauthorizedAccessException)
 				{
 					Debug.WriteLine("Camera access denied");
@@ -192,6 +182,8 @@ namespace XamDox.UWP.Renderers
 
 		private async Task StopPreviewAsync()
 		{
+			await CapturePhoto();
+
 			_isPreviewing = false;
 			await _mediaCapture.StopPreviewAsync();
 
@@ -248,10 +240,6 @@ namespace XamDox.UWP.Renderers
 			}
 		}
 
-		#endregion
-
-		#region Helpers
-
 		private static async Task<DeviceInformation> FindCameraDeviceByPanelAsync(Windows.Devices.Enumeration.Panel desiredPanel)
 		{
 
@@ -275,10 +263,6 @@ namespace XamDox.UWP.Renderers
 			}
 		}
 
-		#endregion
-
-		#region Lifecycle
-
 		private async void OnAppSuspending(object sender, SuspendingEventArgs e)
 		{
 			var deferral = e.SuspendingOperation.GetDeferral();
@@ -293,6 +277,16 @@ namespace XamDox.UWP.Renderers
 			_displayInformation.OrientationChanged += OnOrientationChanged;
 		}
 
-		#endregion
+		private async Task CapturePhoto()
+		{
+			var lowLagCapture = await _mediaCapture.PrepareLowLagPhotoCaptureAsync(ImageEncodingProperties.CreateJpeg());
+
+			var capturedPhoto = await lowLagCapture.CaptureAsync();
+			var softwareBitmap = capturedPhoto.Frame.AsStream();
+
+			CapturePhotoService.ImageCaptureHandler(Xamarin.Forms.ImageSource.FromStream(() => softwareBitmap));
+
+			await lowLagCapture.FinishAsync();
+		}
 	}
 }
