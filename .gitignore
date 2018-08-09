@@ -15,8 +15,10 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
+x64/[Rr]eleases/
+x64/[Dd]ebug/
+x86/[Rr]eleases/
+x86/[Dd]ebug/
 bld/
 [Bb]in/
 [Oo]bj/
