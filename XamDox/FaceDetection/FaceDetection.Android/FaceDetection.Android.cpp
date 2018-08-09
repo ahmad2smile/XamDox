@@ -1,6 +1,6 @@
 #include "FaceDetection.h"
 
-int AndroidInfo()
+extern "C" int AndroidInfo()
 {
 	return FaceDetection::GetTemplateInfo();
 }

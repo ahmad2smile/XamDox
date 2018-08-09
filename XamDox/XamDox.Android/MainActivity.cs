@@ -3,13 +3,15 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.Design.Widget;
-using Android.Views;
 using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using View = Android.Views.View;
 
 namespace XamDox.Droid
 {
 	[Activity(Label = "XamDox", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	public class MainActivity : FormsAppCompatActivity
 	{
 		public const int CameraPermissionsCode = 1;
 
@@ -29,7 +31,7 @@ namespace XamDox.Droid
 
 			base.OnCreate(bundle);
 
-			Xamarin.Forms.Forms.Init(this, bundle);
+			Forms.Init(this, bundle);
 			LoadApplication(new App());
 
 			_layout = FindViewById(Resource.Id.action_bar_root);

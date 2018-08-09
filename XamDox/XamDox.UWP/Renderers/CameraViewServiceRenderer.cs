@@ -72,8 +72,6 @@ namespace XamDox.UWP.Renderers
 			{
 				Tapped += OnCameraPreviewTapped;
 			}
-
-			//			CapturePhotoService.ImageCaptureHandler(Xamarin.Forms.ImageSource.FromStream(() => new MemoryStream()));
 		}
 
 		private async void SetupCamera()
