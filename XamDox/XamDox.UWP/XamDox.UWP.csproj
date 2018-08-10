@@ -151,6 +151,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FaceDetection\FaceDetection.UWP\FaceDetection.UWP.vcxproj">
+      <Project>{88dba0fe-5bfb-4759-901c-178c01a48bad}</Project>
+      <Name>FaceDetection.UWP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamDox.Components\XamDox.Components.csproj">
       <Project>{0E1D74D4-14DD-4989-BE96-AF47EE3C4C09}</Project>
       <Name>XamDox.Components</Name>
