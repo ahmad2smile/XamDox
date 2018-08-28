@@ -14,4 +14,12 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="FaceDetection.UWP.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="haarcascade_frontalface_default.xml">
+      <Filter>Resources</Filter>
+    </Xml>
+    <Xml Include="haarcascade_eye.xml">
+      <Filter>Resources</Filter>
+    </Xml>
+  </ItemGroup>
 </Project>

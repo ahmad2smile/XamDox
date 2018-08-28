@@ -5,7 +5,7 @@ namespace FaceDetection_UWP
 	public ref class FaceDetectionBridge sealed
 	{
 	public:
-		int MeaningOfLife();
+		int setupFaceDetection(unsigned char image);
 	private:
 
 	};

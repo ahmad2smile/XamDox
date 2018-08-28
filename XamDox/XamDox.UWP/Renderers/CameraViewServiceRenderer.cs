@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FaceDetection_UWP;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace XamDox.UWP.Renderers
 {
 	public class CameraViewServiceRenderer : ViewRenderer<CameraView, CaptureElement>
 	{
+		//		[DllImport("FaceDetection_UWP.dll")]
+		//		private static extern int setupFaceDetection(Xamarin.Forms.ImageSource imgSrc);
+
 		private readonly DisplayInformation _displayInformation = DisplayInformation.GetForCurrentView();
 		private DisplayOrientations _displayOrientation = DisplayOrientations.Portrait;
 		private readonly DisplayRequest _displayRequest = new DisplayRequest();
@@ -282,9 +286,22 @@ namespace XamDox.UWP.Renderers
 			var capturedPhoto = await lowLagCapture.CaptureAsync();
 			var softwareBitmap = capturedPhoto.Frame.AsStream();
 
-			CapturePhotoService.ImageCaptureHandler(Xamarin.Forms.ImageSource.FromStream(() => softwareBitmap));
+			var imageSource = Xamarin.Forms.ImageSource.FromStream(() => softwareBitmap);
+
+			CapturePhotoService.ImageCaptureHandler(imageSource);
 
 			await lowLagCapture.FinishAsync();
+
+			try
+			{
+				var gg = new FaceDetectionBridge();
+				var g = gg.setupFaceDetection(new byte());
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				throw;
+			}
 		}
 	}
 }

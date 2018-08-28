@@ -8,10 +8,6 @@ using Frame = Windows.UI.Xaml.Controls.Frame;
 
 namespace XamDox.UWP
 {
-	/// <inheritdoc />
-	/// <summary>
-	/// Provides application-specific behavior to supplement the default Application class.
-	/// </summary>
 	sealed partial class App
 	{
 		/// <inheritdoc />

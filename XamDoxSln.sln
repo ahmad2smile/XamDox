@@ -38,7 +38,6 @@ Global
 		XamDox\FaceDetection\FaceDetection.Shared\FaceDetection.Shared.vcxitems*{0a87d29a-cc12-49e0-8e9a-6000192920c2}*SharedItemsImports = 9
 		XamDox\FaceDetection\FaceDetection.Shared\FaceDetection.Shared.vcxitems*{3c70dd05-26d1-46dd-aff2-d6a893d19262}*SharedItemsImports = 4
 		XamDox\FaceDetection\FaceDetection.Shared\FaceDetection.Shared.vcxitems*{7c70795f-223b-42d1-ac2a-9ea91cbf9631}*SharedItemsImports = 4
-		XamDox\FaceDetection\FaceDetection.Shared\FaceDetection.Shared.vcxitems*{88dba0fe-5bfb-4759-901c-178c01a48bad}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
